@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block body %}
+<body>
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3>¡Error al insertar los datos!</h3>
+                <h2>¡Revisa el formato, tramposo!</h2>
+			</div>
+				<div class="d-flex justify-content-center">
+                    <!--Añadir ruta al href. Redireccionar para hacer un update de la contraseña-->
+					<a href="/login">Volver a tu usuario</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+{% endblock %}
+{% block footer %}
+<p>Made with &#10084; by Jose Luis Lloret</p>
+{% endblock %}

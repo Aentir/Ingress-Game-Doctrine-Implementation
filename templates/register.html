@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block body %}
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <h3>¡Regístrate!</h3>
+                </div>
+                <!--Formulario para logearse, añadir action y method a la etiqueta form-->
+                <div class="card-body">
+                    <form action="/newAgent" method="post">
+                        <!--Nombre agente-->
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" name="username" class="form-control" placeholder="Nombre de agente" required>
+                        </div>
+                        <!--Facción agente-->
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <!--Falta añadir icono al campo-->
+                                <span class="input-group-text"><i class="fa-light fa-raygun"></i></span>
+                            </div>
+                            <input type="text" name="faction" class="form-control" placeholder="Facción" required>
+                        </div>
+                        <!--Contraseña agente-->
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Registrar" class="btn float-right login_btn">
+                        </div>
+                        <div class="form-group">
+                            <input type="button" value="Volver" class="btn float-right login_btn" onclick="location.href='/'" style="margin-right: 40%; width: 30%;">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}
+{% block footer %}
+<p>Made with &#10084; by Jose Luis Lloret</p>
+{% endblock %}

@@ -1,0 +1,7 @@
+{
+    "server": "localhost",
+    "user": "root",
+    "password": "",
+    "dbname": "doctrine_mvc_ingress",
+    "driver": "pdo_mysql"
+}

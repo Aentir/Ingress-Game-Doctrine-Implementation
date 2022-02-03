@@ -1,0 +1,30 @@
+{
+    "/": {
+        "controller": "DashBoardController",
+        "action": "dashBoard"
+    },
+    "/register": {
+        "controller": "RegisterController",
+        "action": "register"
+    },
+    "/newAgent": {
+        "controller": "InsertNewAgentController",
+        "action": "insert"
+    },
+    "/login": {
+        "controller": "LoginController",
+        "action": "login"
+    },
+    "/logout": {
+        "controller": "LogOutController",
+        "action" : "logout"
+    },
+    "/stats" : {
+        "controller": "InsertStatsController",
+        "action": "insertStats"
+    },
+    "/rankStats": {
+        "controller": "ShowRankStats",
+        "action": "showRank"
+    }
+}
