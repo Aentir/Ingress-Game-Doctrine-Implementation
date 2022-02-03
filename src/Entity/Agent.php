@@ -184,29 +184,4 @@ class Agent
 
         return $this;
     }
-
-    public function formatDataAgent($data)
-    {
-        $string = $data["estadisticas"];    //Recupero la info por post del textarea  
-
-        $split_data = explode("\n", $string);   //Separo la información por saltos de línea
-        $cabecera = explode("\t", $split_data[0]);  //Tengo todas las cabeceras en el índice 0
-        $datos = explode("\t", $split_data[1]);     //Tengo toda la info en el índice 1
-
-        array_pop($datos);
-        
-
-        $cabeceras_to_string = implode(",", $cabecera);  //Paso el array a string y separo por comas
-        $cabecera_lower = strtolower($cabeceras_to_string); //Convierto todo el string a minúsculas para que lo acepte la BBDD
-        $cadenaConvert = str_replace(" ", "_", $cabecera_lower);    //Sustituyo los espacios por "_"
-        $trim = trim($cadenaConvert, "\"");                 //Elimino las comillas dobles
-
-        $headers = explode(",", $trim);                  //Convierto el string a array de nuevo, separando por comas
-
-        $array_inserts = [];    //Almaceno las cabeceras y los datos
-        array_push($array_inserts, $headers);
-        array_push($array_inserts, $datos);
-
-        return $array_inserts;
-    }
 }

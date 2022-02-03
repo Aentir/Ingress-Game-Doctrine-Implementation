@@ -16,25 +16,31 @@ class InsertStatsController extends AbstractController
 
     public function insertStats()
     {
-        session_start();
+        //session_start();
         $em = (new EntityManager())->get();
 
         $uploadRepository = $em->getRepository(Uploads::class);
-
-        $spanRepository = $em->getRepository(Span::class);
-        
+        $spanRepository = $em->getRepository(Span::class);  
         $statsRepository = $em->getRepository(Stats::class);
-        
-        $agentRepository = $em->getRepository(Agent::class);
-        
+        $agentRepository = $em->getRepository(Agent::class);  
+
         $agente = $agentRepository->find($_SESSION["IdAgent"]); //$agente tiene una NUEVA INSTANCIA "virtual" de la entidad AGENT, por lo que tengo acceso a sus PROPIEDADES y METODOS
-        $datos = $agente->formatDataAgent($_POST);
+        $datos = $agentRepository->formatDataAgent($_POST);
+        /*echo "<pre>";
+        Debug::dump($datos);
+        die();*/
+
+        if ($datos == null) {
+            
+            return $this->render("fail_insert_stats.html", []);
+        }
 
         /*echo "<pre>";
         var_dump($datos);*/
 
         //Mando al repositorio de Span el timeSpan concreto necesario
         $span = $spanRepository->findOneBy(array("timeSpan" => $datos[1][0]));
+        
 
         //$span = $spanRepository->find(1);
         /*echo "<pre>";
@@ -43,13 +49,18 @@ class InsertStatsController extends AbstractController
 
         //Mando al repositorio de Upload los datos para el date,time, id de Agente y de Span
         $upload = $uploadRepository->insertUpload($datos, $agente, $span);
-        //var_dump($_POST);
-        //var_dump($span);
         
         //Mando al repositorio de Stats la id de Upload, de Agente y las estadísticas
         $stats = $statsRepository->insertStats($upload, $agente, $datos);
-
-        //FALTA AÑADIR EL RENDER
+        $showActualStats = $statsRepository->findBy(
+            ["idAgent" => $agente], ["idStats" => "DESC"]
+        );
+        if($upload) {
+            $stats;
+            return $this->render("profile.html", [
+                "result" => $showActualStats[0]
+            ]);
+        }
     }
 
 }
