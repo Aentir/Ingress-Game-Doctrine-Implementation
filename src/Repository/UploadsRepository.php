@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityRepository;
 
 class UploadsRepository extends EntityRepository
 {
-    public function insertUpload($datos, $agente, $span, $idEvent)
+    public function insertUpload($agente, $span, $datos, $idEvent)
     {
         //var_dump($datos[1][3]);
         //var_dump($datos[1][4]);
