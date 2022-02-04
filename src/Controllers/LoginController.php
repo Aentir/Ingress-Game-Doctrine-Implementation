@@ -6,6 +6,7 @@ use App\Core\AbstractController;
 use App\Entity\Agent;
 use App\Entity\Stats;
 use App\Core\EntityManager;
+
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\Common\Util\Debug;
 
@@ -30,6 +31,8 @@ class LoginController extends AbstractController
         $showActualStats = $statsRepository->findBy(
             ["idAgent" => $agente], ["idStats" => "DESC"]
         );
+
+
         /*echo "<pre>";
         Debug::dump($showActualStats);
         die();*/

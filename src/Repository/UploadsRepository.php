@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityRepository;
 
 class UploadsRepository extends EntityRepository
 {
-    public function insertUpload($datos, $agente, $span, $id_event = 0)
+    public function insertUpload($datos, $agente, $span, $idEvent)
     {
         //var_dump($datos[1][3]);
         //var_dump($datos[1][4]);
@@ -18,7 +18,7 @@ class UploadsRepository extends EntityRepository
         $upload->setTime(new \DateTime($datos[1][4]));
         $upload->setIdAgent($agente);
         $upload->setTimeSpan($span);
-        $upload->setIdEvent($id_event);
+        $upload->setIdEvent($idEvent);
         $this->getEntityManager()->persist($upload);
         $this->getEntityManager()->flush();
 
