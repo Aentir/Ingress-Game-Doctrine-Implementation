@@ -16,7 +16,8 @@
                 <h4>{{ result.getIdAgent().getAgentName() }}</h4>
                 <p class="text-secondary mb-1">Full Stack Developer</p>
                 <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                <button class="btn btn-primary"><a href="/rankStats" style="color: #fff;">Ranking de estadísticas</a></button>
+                <button class="btn btn-primary"><a href="/rankStats" style="color: #fff;">Ranking de
+                    estadísticas</a></button>
                 <button class="btn btn-outline-primary"><a href="/logout">Cerrar sesión</a></button>
               </div>
             </div>
@@ -25,7 +26,7 @@
         <div class="card mt-3" style="background-color: rgba(0,0,0,0.0) !important;">
           <form action="/stats" method="post">
             <textarea name="estadisticas" id="" cols="40" rows="10">
-              
+
             </textarea>
             <label for="eventSelected">Elige un evento:</label>
             <select name="eventSelected">
@@ -34,15 +35,16 @@
               <option value="Recursion Prime Barcelona">Recursion Prime Barcelona</option>
               <option value="Ingress First Saturday Valencia 11-2019">Ingress First Saturday Valencia 11-2019</option>
               <option value="Ingress First Saturday Valencia 12-2019">Ingress First Saturday Valencia 12-2019</option>
-            
             </select>
 
             <!--<input type="hidden" name="username" value=" {{ sesion.username }}">-->
             <div class="form-group">
-              <input type="submit" value="Upload Stats" class="btn float-right login_btn" style="margin-right: 100px; width: 200px;">
+              <input type="submit" value="Upload Stats" class="btn float-right login_btn"
+                style="margin-right: 100px; width: 200px;">
             </div>
           </form>
-            
+          <!--Estadísticas de primer evento-->
+          
         </div>
       </div>
       <div class="col-md-8" style="padding-left: 5%;">
@@ -103,7 +105,8 @@
             <div class="card h-100">
               <div class="card-body">
                 <!--Muestra de estadísticas-->
-                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">{{ result.getIdAgent().getFaction() }}</i>--
+                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">{{
+                    result.getIdAgent().getFaction() }}</i>--
                   Estadísticas</h6>
                 <small>Nivel -> {{ result.getLevel() }}</small>
                 <div class="progress mb-3" style="height: 5px">
@@ -130,6 +133,99 @@
                   <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66"
                     aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Estadísticas de eventos-->
+        <form action="/stats" method="post">
+          <label for="eventCompared">Elige que evento quieres comparar:</label>
+            <select name="eventCompared">
+              <option value="Recursion Prime Palma de Mallorca">Recursion Prime Palma de Mallorca</option>
+              <option value="Recursion Prime Barcelona">Recursion Prime Barcelona</option>
+              <option value="Ingress First Saturday Valencia 11-2019">Ingress First Saturday Valencia 11-2019</option>
+              <option value="Ingress First Saturday Valencia 12-2019">Ingress First Saturday Valencia 12-2019</option>
+            </select>
+            <div class="form-group">
+              <input type="submit" value="Elegir evento" class="btn float-right login_btn"
+                style="margin-right: 100px; width: 200px;">
+            </div>
+        </form>
+        
+        <div class="row gutters-sm">
+          <div class="col-sm-6 mb-3">
+            <div class="card h-100">
+              <div class="card-body">
+                <!--Muestra de estadísticas-->
+                <h5 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2"></i>
+                Comparación estadísticas por eventos</h5>
+                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">
+                  {{ firstStatsEvents.getIdEvents().getNameEvent() }} <br></i>
+                  </h6>
+                <small>First Lifetime AP -> {{ firstStatsEvents.getLifetimeAp() }}</small><br>
+                <small>Last Lifetime AP -> {{ lastStatsEvents.getLifetimeAp() }}</small><br>
+                <small>Difference -> {{ firstStatsEvents.getLifetimeAp() - lastStatsEvents.getLifetimeAp() }}</small>
+                <div class="progress mb-3" style="height: 5px">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <small>First Unique Portals Visited -> {{ firstStatsEvents.getUniquePortalsVisited() }}</small><br>
+                <small>Last Unique Portals Visited -> {{ lastStatsEvents.getUniquePortalsVisited() }}</small><br>
+                <small>Difference -> {{ firstStatsEvents.getUniquePortalsVisited() - lastStatsEvents.getUniquePortalsVisited() }}</small>
+                <div class="progress mb-3" style="height: 5px">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <small>First Resonators Deployed -> {{ firstStatsEvents.getResonatorsDeployed() }}</small><br>
+                <small>Last Resonators Deployed -> {{ lastStatsEvents.getResonatorsDeployed() }}</small><br>
+                <small>Difference -> {{ firstStatsEvents.getResonatorsDeployed() - lastStatsEvents.getResonatorsDeployed() }}</small>
+                <div class="progress mb-3" style="height: 5px">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <small>First Links Created -> {{ firstStatsEvents.getLinksCreated() }}</small><br>
+                <small>Last Links Created -> {{ lastStatsEvents.getLinksCreated() }}</small><br>
+                <small>Difference -> {{ firstStatsEvents.getLinksCreated() - lastStatsEvents.getLinksCreated() }}</small>
+                <div class="progress mb-3" style="height: 5px">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <small>First Control Fields Created -> {{ firstStatsEvents.getControlFieldsCreated() }}</small><br>
+                <small>Last Control Fields Created -> {{ lastStatsEvents.getControlFieldsCreated() }}</small><br>
+                <small>Difference -> {{ firstStatsEvents.getControlFieldsCreated() - lastStatsEvents.getControlFieldsCreated() }}</small>
+                <div class="progress mb-3" style="height: 5px">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <small>First XM Recharged -> {{ firstStatsEvents.getXmRecharged() }}</small><br>
+                <small>Last XM Recharged -> {{ lastStatsEvents.getXmRecharged() }}</small><br>
+                <small>Difference -> {{ firstStatsEvents.getXmRecharged() - lastStatsEvents.getXmRecharged() }}</small>
+                <div class="progress mb-3" style="height: 5px">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <small>First Portals Captured -> {{ firstStatsEvents.getPortalsCaptured() }}</small><br>
+                <small>Last Portals Captured -> {{ lastStatsEvents.getPortalsCaptured() }}</small><br>
+                <small>Difference -> {{ firstStatsEvents.getPortalsCaptured() - lastStatsEvents.getPortalsCaptured() }}</small>
+                <div class="progress mb-3" style="height: 5px">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <small>First Hacks -> {{ firstStatsEvents.getHacks() }}</small><br>
+                <small>Last Hacks -> {{ lastStatsEvents.getHacks() }}</small><br>
+                <small>Difference -> {{ firstStatsEvents.getHacks() - lastStatsEvents.getHacks() }}</small>
+                <div class="progress mb-3" style="height: 5px">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <small>First Resonators_Destroyed -> {{ firstStatsEvents.getResonatorsDestroyed() }}</small><br>
+                <small>Last Resonators_Destroyed -> {{ lastStatsEvents.getResonatorsDestroyed() }}</small><br>
+                <small>Difference -> {{ firstStatsEvents.getResonatorsDestroyed() - lastStatsEvents.getResonatorsDestroyed() }}</small>
+                <div class="progress mb-3" style="height: 5px">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
               </div>
             </div>
           </div>

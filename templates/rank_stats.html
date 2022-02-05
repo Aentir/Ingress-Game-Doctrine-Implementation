@@ -22,30 +22,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {% for stats in result %}
                                         <tr>
-                                            <td>{{ resultados[0].faction }}</td>
-                                            <td>{{ resultados[0].agent_name }}</td>
-                                            <td>{{ resultados[0].level }}</td>
-                                            <td>{{ resultados[0].lifetime_ap }}</td>
-                                            <td>{{ resultados[0].current_ap }}</td>
-                                            <td>{{ resultados[0].unique_portals_visited }}</td>
+                                            <td>{{ stats.getIdAgent().getFaction() }}</td>
+                                            <td>{{ stats.getIdAgent().getAgentName() }}</td>
+                                            <td>{{ stats.getLevel() }}</td>
+                                            <td>{{ stats.getLifetimeAp() }}</td>
+                                            <td>{{ stats.getCurrentAp() }}</td>
+                                            <td>{{ stats.getMissionDaysAttended() }}</td>
+                                            <td>{{ stats.getNl1331meetupsAttended() }}</td>
                                         </tr>
-                                        <tr>
-                                            <td>{{ resultados[1].faction }}</td>
-                                            <td>{{ resultados[1].agent_name }}</td>
-                                            <td>{{ resultados[1].level }}</td>
-                                            <td>{{ resultados[1].lifetime_ap }}</td>
-                                            <td>{{ resultados[1].current_ap }}</td>
-                                            <td>{{ resultados[1].unique_portals_visited }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ resultados[2].faction }}</td>
-                                            <td>{{ resultados[2].agent_name }}</td>
-                                            <td>{{ resultados[2].level }}</td>
-                                            <td>{{ resultados[2].lifetime_ap }}</td>
-                                            <td>{{ resultados[2].current_ap }}</td>
-                                            <td>{{ resultados[2].unique_portals_visited }}</td>
-                                        </tr>                          
+                                        {% endfor %}
+                                                               
                                     </tbody>
                                 </table>
                             </div>

@@ -21,18 +21,36 @@ class InsertStatsController extends AbstractController
         //session_start();
         $em = (new EntityManager())->get();
 
+        /**
+         * Instancio todos los REPOS
+         */
         $uploadRepository = $em->getRepository(Uploads::class);
         $spanRepository = $em->getRepository(Span::class);
         $statsRepository = $em->getRepository(Stats::class);
         $agentRepository = $em->getRepository(Agent::class);
         $statsEventsRepository = $em->getRepository(StatsEvents::class);
         $eventsRepository = $em->getRepository(Events::class);
+
+        /**
+         * Busco un agente por su ID guardada en la sesión
+         */
         $agente = $agentRepository->find($_SESSION["IdAgent"]); //$agente tiene una NUEVA INSTANCIA "virtual" de la entidad AGENT, por lo que tengo acceso a sus PROPIEDADES y METODOS
+
+        /**
+         * Devuelvo todos los datos formateados
+         */
         $datos = $agentRepository->formatDataAgent($_POST);
 
         /*echo "<pre>";
         Debug::dump($events->getIdEvent());
         die();*/
+
+        /*if ($_POST["estadisticas"] == null){
+            echo "ok";
+        }
+        
+        die();*/
+
         if ($datos == null) {
 
             return $this->render("fail_insert_stats.html", []);
@@ -53,25 +71,21 @@ class InsertStatsController extends AbstractController
 
         $idEvent = ($_POST["eventSelected"] !== "Ningun evento") ? 1 : 0;
 
+        
 
-        //Mando al repositorio de Upload los datos para el date,time, id de Agente y de Span
-        //Mando al repositorio de Stats la id de Upload, de Agente y las estadísticas
-
-        if ($idEvent == 0) {
-            $upload = $uploadRepository->insertUpload($agente, $span, $datos, $idEvent);
-
-            $stats = $statsRepository->insertStats($upload, $agente, $datos);
-        } else {
-            $events = $eventsRepository->findOneBy(["nameEvent" => $_POST["eventSelected"]]);
-            $upload = $uploadRepository->insertUpload($agente, $span, $datos, $events);
-            $statsEvents = $statsEventsRepository->insertStats($upload, $agente, $datos, $events);
-        }
+        
+        //Muestro stats último evento
+        $lastStatsEvent = $statsEventsRepository->findBy(["idEvents" => 2], ["idStatsEvents" => "DESC"]);
+        //Muestro stats primer evento
+        $statsEvents = $statsEventsRepository->findBy(["idEvents" => 2], ["idStatsEvents" => "ASC"]);
         $showActualStats = $statsRepository->findBy(
             ["idAgent" => $agente],
             ["idStats" => "DESC"]
         );
         return $this->render("profile.html", [
-            "result" => $showActualStats[0]
+            "result" => $showActualStats[0],
+            "firstStatsEvents" => $statsEvents[0],
+            "lastStatsEvents" => $lastStatsEvent[0]
         ]);
     }
 }

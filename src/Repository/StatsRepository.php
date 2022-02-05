@@ -27,4 +27,10 @@ class StatsRepository extends EntityRepository
 
         return $stats;
     }
+
+    public function showRank()
+    {
+        $rankStats = $this->findBy([], ["level" => "DESC", "currentAp" => "DESC"]);
+        return $rankStats;
+    }
 }
