@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Core\{AbstractController, EntityManager};
 use App\Entity\{Stats, Agent, Uploads, Span, StatsEvents, Events};
-use Doctrine\ORM\Mapping\Entity;
 use Doctrine\Common\Util\Debug;
 
 class InsertStatsController extends AbstractController
@@ -36,7 +35,7 @@ class InsertStatsController extends AbstractController
 
             return $this->render("fail_insert_stats.html", []);
         }
-        $span = $spanRepository->findOneBy(array("timeSpan" => $datos[1][0]));
+        $span = $spanRepository->span($datos);
 
         /**
          * Bloque para controlar la subida de estadísticas a la tabla

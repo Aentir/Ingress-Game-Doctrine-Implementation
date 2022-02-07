@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Core\AbstractController;
-use Doctrine\ORM\Mapping\Entity;
 use Doctrine\Common\Util\Debug;
 
 /**

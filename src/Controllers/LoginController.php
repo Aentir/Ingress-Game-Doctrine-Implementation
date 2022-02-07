@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Core\{AbstractController, EntityManager};
 use App\Entity\{Agent, Stats};
-use Doctrine\ORM\Mapping\Entity;
 use Doctrine\Common\Util\Debug;
 
 /**

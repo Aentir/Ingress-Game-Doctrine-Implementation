@@ -24,28 +24,28 @@ class StatsEvents
     /** @ORM\Column(type="integer", length="11", name="lifetime_ap") */
     private $lifetimeAp;
 
-    /** @ORM\Column(type="integer", length="11", name="unique_portals_visited") */
+    /** @ORM\Column(type="integer", length="11", name="unique_portals_visited", nullable=true) */
     private $uniquePortalsVisited;
 
-    /** @ORM\Column(type="integer", length="11", name="resonators_deployed") */
+    /** @ORM\Column(type="integer", length="11", name="resonators_deployed", nullable=true) */
     private $resonatorsDeployed;
 
-    /** @ORM\Column(type="integer", length="11", name="links_created") */
+    /** @ORM\Column(type="integer", length="11", name="links_created", nullable=true) */
     private $linksCreated;
 
-    /** @ORM\Column(type="integer", length="11", name="control_fields_created") */
+    /** @ORM\Column(type="integer", length="11", name="control_fields_created", nullable=true) */
     private $controlFieldsCreated;
 
-    /** @ORM\Column(type="integer", length="11", name="xm_recharged") */
+    /** @ORM\Column(type="integer", length="11", name="xm_recharged", nullable=true) */
     private $xmRecharged;
 
-    /** @ORM\Column(type="integer", length="11", name="portals_captured") */
+    /** @ORM\Column(type="integer", length="11", name="portals_captured", nullable=true) */
     private $portalsCaptured;
 
-    /** @ORM\Column(type="integer", length="11", name="hacks") */
+    /** @ORM\Column(type="integer", length="11", name="hacks", nullable=true) */
     private $hacks;
 
-    /** @ORM\Column(type="integer", length="11", name="resonators_destroyed") */
+    /** @ORM\Column(type="integer", length="11", name="resonators_destroyed", nullable=true) */
     private $resonatorsDestroyed;
 
     /**

@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Core\{AbstractController, EntityManager};
 use App\Entity\StatsEvents;
-use Doctrine\ORM\Mapping\Entity;
 use Doctrine\Common\Util\Debug;
 
 /**
@@ -24,16 +23,10 @@ class StatsDiffEvents extends AbstractController
         }
 
         //Primeras stats
-        $firstStatsEvents = $statsEventsRepository->findBy([
-            "idAgent" => $_SESSION["IdAgent"],
-            "idEvents" => $idEvent
-        ], ["idStatsEvents" => "ASC"]);
+        $firstStatsEvents = $statsEventsRepository->firstStatsEvents($idEvent);
 
         //Últimas stats
-        $lastStatsEvent = $statsEventsRepository->findBy([
-            "idAgent" => $_SESSION["IdAgent"],
-            "idEvents" => $idEvent
-        ], ["idStatsEvents" => "DESC"]);
+        $lastStatsEvent = $statsEventsRepository->lastStatsEvents($idEvent);
 
         if (!$lastStatsEvent && !$firstStatsEvents) {
             $firstStatsEvents[0] = null;

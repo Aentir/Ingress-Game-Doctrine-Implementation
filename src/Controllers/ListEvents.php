@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Core\{AbstractController, EntityManager};
 use App\Entity\Events;
-use Doctrine\ORM\Mapping\Entity;
 use Doctrine\Common\Util\Debug;
 //Controller encargado de mostrar todos los eventos
 class ListEvents extends AbstractController

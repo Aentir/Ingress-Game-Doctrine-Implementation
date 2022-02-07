@@ -9,11 +9,11 @@ use Doctrine\Common\Util\Debug;
 
 class StatsRepository extends EntityRepository
 {
+    /**
+     * Devuelve un nuevo objeto Stats
+     */
     public function insertStats($upload, $agente, $datos)
     {
-        /*echo "<pre>";
-        Debug::dump($agente);
-        die();*/
         $stats = new Stats();
         $stats->setIdUploads($upload);
         $stats->setIdAgent($agente);
@@ -28,9 +28,11 @@ class StatsRepository extends EntityRepository
         return $stats;
     }
 
+    /**
+     * Muestra las estadísticas ordenadas por "level" y "currentAp" de manera DESC
+     */
     public function showRank()
     {
-        $rankStats = $this->findBy([], ["level" => "DESC", "currentAp" => "DESC"]);
-        return $rankStats;
+        return $this->findBy([], ["level" => "DESC", "currentAp" => "DESC"]);
     }
 }
