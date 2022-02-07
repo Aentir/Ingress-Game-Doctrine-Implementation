@@ -17,12 +17,12 @@ use Doctrine\ORM\Mapping as ORM;
  {
     /**
      * @ORM\Id
-     * @ORM\Column(type="integer", length="11", name="id_span")
+     * @ORM\Column(type="integer", length="11", name="id_span", unique=true)
      * @ORM\GeneratedValue
      */
     private $idSpan;
 
-    /** @ORM\Column(type="string", length="100", name="time_span") */
+    /** @ORM\Column(type="string", length="100", name="time_span", unique=true) */
     private $timeSpan;
 
     /**

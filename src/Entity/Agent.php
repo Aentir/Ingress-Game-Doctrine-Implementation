@@ -17,12 +17,12 @@ class Agent
 {
     /**
      * @ORM\Id
-     * @ORM\Column(type="integer", length="11", name="id_agent")
+     * @ORM\Column(type="integer", length="11", name="id_agent", unique=true)
      * @ORM\GeneratedValue
      */
     private $idAgent;
 
-    /** @ORM\Column(type="string", length="100", name="agent_name") */
+    /** @ORM\Column(type="string", length="100", name="agent_name", unique=true) */
     private $agentName;
 
     /** @ORM\Column(type="string", length="64", name="`password`") */

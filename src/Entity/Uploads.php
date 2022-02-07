@@ -16,7 +16,7 @@ class Uploads
 {
     /**
      * @ORM\Id
-     * @ORM\Column(type="integer", length="11", name="id_upload")
+     * @ORM\Column(type="integer", length="11", name="id_upload", unique=true)
      * @ORM\GeneratedValue
      */
     private $idUpload;

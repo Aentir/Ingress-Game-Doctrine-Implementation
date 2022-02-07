@@ -17,18 +17,18 @@ class Events
 {
     /**
      * @ORM\Id
-     * @ORM\Column(type="integer", length="11", name="id_event")
+     * @ORM\Column(type="integer", name="id_event", unique=true)
      * @ORM\GeneratedValue
      */
     private $idEvent;
 
-    /** @ORM\Column(type="string", length="100", name="name_event") */
+    /** @ORM\Column(type="string", length="100", name="name_event", unique=true) */
     private $nameEvent;
 
     /** @ORM\Column(type="string", length="100", name="alias_event") */
     private $aliasEvent;
 
-    /** @ORM\Column(type="string", length="250", name="descrip_event") */
+    /** @ORM\Column(type="string", length="250", name="descrip_event", nullable=true) */
     private $descripEvent;
 
     /** @ORM\Column(type="date", name="date_event") */

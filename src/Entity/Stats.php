@@ -15,7 +15,7 @@ class Stats
 {
     /**
      * @ORM\Id
-     * @ORM\Column(type="integer", name="id_stats")
+     * @ORM\Column(type="integer", name="id_stats", unique=true)
      * @ORM\GeneratedValue
      */
     private $idStats;
