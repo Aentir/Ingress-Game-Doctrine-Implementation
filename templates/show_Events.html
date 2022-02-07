@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card" style="background-color: rgba(0,0,0,0.0) !important;">
+                    <div class="card-body" style="width: 1000px;">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Ingress_Logo_vector.svg/1200px-Ingress_Logo_vector.svg.png"
+                                alt="Admin" class="rounded-circle" width="150">
+                            <div class="d-flex justify-content-center links">
+                                <!--Añadir ruta al href. Redireccionar donde esté el insert-->
+                                <button class="btn btn-primary"><a href="/login" style="color: #fff;">Volver al
+                                        perfil</a></button>
+                            </div>
+                            <div class="mt-3">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Id Evento</th>
+                                            <th scope="col">Nombre Evento</th>
+                                            <th scope="col">Alias Evento</th>
+                                            <th scope="col">Descripción Evento</th>
+                                            <th scope="col">Fecha Evento</th>
+                                            <th scope="col">Localización Evento</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for events in result %}
+                                        <tr>
+                                            <td>{{ events.getIdEvent() }}</td>
+                                            <td><a href="/detailEvent/{{events.getNameEvent()}}">{{ events.getNameEvent() }}</a></td>
+                                            <td>{{ events.getAliasEvent() }}</td>
+                                            <td>{{ events.getDescripEvent() }}</td>
+                                            <td>{{ events.getDateEvent() | date('d/m/Y') }}</td>
+                                            <td>{{ events.getPlaceEvent() }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+{% block footer %}
+<p>Made with &#10084; by Jose Luis Lloret</p>
+{% endblock %}

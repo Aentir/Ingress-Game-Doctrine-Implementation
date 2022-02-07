@@ -4,12 +4,11 @@ namespace App\Controllers;
 
 use App\Core\AbstractController;
 
+//Controller encargado de mostrar el form para logear
 class DashBoardController extends AbstractController
 {
-   //Muestro el form de login
    public function dashBoard()
    {
-      
       if(isset($_SESSION["username"])){   //Si la variable de sesión está establecida, redirijo al perfil de ESE agente
          header("location:/login");
       }

@@ -47,22 +47,16 @@ class Uploads
 
     /**
      * One upload has many stats. This is the inverse side.
-     * @ORM\OneToMany(targetEntity="Stats", mappedBy="uploads")
+     * @ORM\OneToOne(targetEntity="Stats", mappedBy="uploads")
      */
     private $stats;
 
     /**
      * One upload has many statsEvents. This is the inverse side.
-     * @ORM\OneToMany(targetEntity="StatsEvents", mappedBy="idUploads")
+     * @ORM\OneToOne(targetEntity="StatsEvents", mappedBy="idUploads")
      */
     private $statsEvents;
 
-
-    /** Se inician las colecciones de las entidades relacionadas */
-    public function __construct() {
-        $this->stats = new ArrayCollection();
-        $this->statsEvents = new ArrayCollection();
-    }
 
     /**
      * Get the value of idUpload

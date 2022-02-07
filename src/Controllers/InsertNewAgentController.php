@@ -2,12 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Core\AbstractController;
+use App\Core\{AbstractController, EntityManager};
 use App\Entity\Agent;
-use App\Core\EntityManager;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\Common\Util\Debug;
-
+//Controller encargado de registrar un nuevo usuario
 class InsertNewAgentController extends AbstractController
 {
     public function insert()

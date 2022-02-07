@@ -26,6 +26,7 @@ body{
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1rem;
+    
 }
 
 .gutters-sm {
@@ -49,4 +50,8 @@ body{
 }
 .shadow-none {
     box-shadow: none!important;
+}
+
+textarea {
+    margin-top: 60px;
 }

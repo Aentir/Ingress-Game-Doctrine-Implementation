@@ -26,5 +26,17 @@
     "/rankStats": {
         "controller": "ShowRankStats",
         "action": "showRank"
-    }
+    },
+    "/statsDiffEvents": {
+        "controller": "StatsDiffEvents",
+        "action": "showDiffStats"
+    },
+    "/listEvents": {
+        "controller": "ListEvents",
+        "action": "showEvents"
+    },
+    "/detailEvent": {
+        "controller": "DetailEvent",
+        "action": "detailEvent"
+    }   
 }

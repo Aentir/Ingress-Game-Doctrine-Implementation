@@ -13,8 +13,6 @@ class AgentRepository extends EntityRepository
      * Si no existe, hace una inserción, registrando al usuario.
      * Si existe, devuelve un mensaje.
      */
-    /*public function register1($name, $password, $faction)*/
-
     public function register()
     {
         $username = $_POST["username"];
@@ -26,8 +24,6 @@ class AgentRepository extends EntityRepository
             "password" => $password,
             "faction" => $faction
         ));
-
-        //var_dump($_POST);
 
         if (count($_POST) > 0) {  //Si $_POST tiene información, se lo paso a $register->findOneBy, si encuentra el usuario lanzo un error (ya existe ese usuario)
             if ($agent) {
@@ -54,10 +50,8 @@ class AgentRepository extends EntityRepository
         $split_data = explode("\n", $string);   //Separo la información por saltos de línea
         $cabecera = explode("\t", $split_data[0]);  //Tengo todas las cabeceras en el índice 0
         $data = explode("\t", $split_data[1]);     //Tengo toda la info en el índice 1
-
         array_pop($data);
         
-
         $cabeceras_to_string = implode(",", $cabecera);  //Paso el array a string y separo por comas
         $data_to_string = implode(",", $data);
         $cabecera_lower = strtolower($cabeceras_to_string); //Convierto todo el string a minúsculas para que lo acepte la BBDD
@@ -68,14 +62,6 @@ class AgentRepository extends EntityRepository
         $data = explode(",", $data_to_string);
         array_pop($headers);
 
-        /*echo "<pre>";
-        var_dump($headers);
-
-        echo "<pre>";
-        //var_dump($data);
-        var_dump(array_filter($data));*/
-
-        //die();
         if (count(array_filter($headers)) !== count(array_filter($data))) {
             return null;
         }
